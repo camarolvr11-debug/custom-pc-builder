@@ -176,6 +176,23 @@
         background: #e8edf3; border-radius: 999px; padding: 9px 20px; white-space: nowrap;
       }
 
+      /* ---------- motherboard chipset groups ---------- */
+      .board-group { border: 1px solid var(--line); border-radius: 12px; background: rgba(9, 11, 16, 0.35); overflow: hidden; }
+      .board-group.has-sel { border-color: var(--line-strong); }
+      .bg-head {
+        display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+        background: none; border: none; color: var(--text); padding: 13px 15px; cursor: pointer;
+      }
+      .bg-head:hover { background: rgba(255, 255, 255, 0.03); }
+      .bg-main { flex: 1 1 auto; min-width: 0; }
+      .bg-name { font-size: 1rem; font-weight: 700; line-height: 1.25; display: block; }
+      .bg-desc { color: var(--muted); font-size: 0.8rem; margin-top: 2px; display: block; line-height: 1.35; }
+      .bg-sel { color: var(--cyan); font-size: 0.78rem; margin-top: 3px; display: block; font-weight: 600; }
+      .bg-from { font-size: 0.9rem; font-weight: 600; white-space: nowrap; color: #e2e8f0; }
+      .bg-chev { color: var(--faint); font-size: 0.95rem; flex: 0 0 auto; }
+      .bg-body { display: flex; flex-direction: column; gap: 10px; padding: 2px 10px 12px; }
+      .bg-body .opt { background: rgba(9, 11, 16, 0.55); }
+
       /* ---------- aside: preview ---------- */
       .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 17px 18px; }
       .card h2 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; margin: 0 0 14px; color: #e2e8f0; }
@@ -348,9 +365,9 @@
 
           <section class="specific-box" aria-labelledby="specificHeading">
             <h3 id="specificHeading">HAVE A SPECIFIC BRAND OR MODEL IN MIND?</h3>
-            <p>Most parts above are listed generically — for example, a <strong>B850 motherboard</strong> or an <strong>RTX 5070</strong> — so we can source the best-value brand at order time. If you want an <strong>exact brand or model</strong> for any part, tell us here and we&rsquo;ll check its current price and availability for your quote.</p>
+            <p>Most parts above are listed generically — for example, an <strong>RTX 5070</strong> — so we can source the best-value brand at order time. Motherboards are the exception: those are <strong>actual brand and model boards</strong>, grouped by chipset. If you want an <strong>exact brand or model</strong> for any other part, tell us here and we&rsquo;ll check its current price and availability for your quote.</p>
             <label for="customParts" style="display:block;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;color:#fde68a;margin-bottom:8px;">YOUR SPECIFIC REQUESTS (OPTIONAL)</label>
-            <textarea id="customParts" maxlength="800" placeholder="Example: I'd like the graphics card to be XFX if possible, a Gigabyte motherboard, and Corsair RAM — everything else I'm flexible on."></textarea>
+            <textarea id="customParts" maxlength="800" placeholder="Example: I'd like the graphics card to be XFX if possible and Corsair RAM — everything else I'm flexible on."></textarea>
             <div class="specific-count"><span id="customPartsCount">0</span> / 800</div>
             <p class="specific-note">Leave this blank and we&rsquo;ll pick the best-value brand for each part. If an exact model you name is out of stock or has jumped in price, we&rsquo;ll flag it in your quote and suggest the closest match — no silent swaps. Your note is included automatically when you copy the build or hit Request This Build.</p>
           </section>
@@ -396,7 +413,7 @@
               <button class="cta-main" id="ctaMain">Continue to Cooling ›</button>
               <button class="cta-ghost" id="ctaSave">Save Build</button>
             </div>
-            <p class="sum-note">Parts are listed generically by chipset and spec, and priced at cost — no markup — plus the flat $300 build fee, same as the live builds page. The exact brand for each part is sourced at order time for the best value unless you name one in the &ldquo;Specific brand or model&rdquo; box. Prices are estimates; your confirmed quote locks in current pricing from Amazon, Best Buy, Newegg, B&amp;H Photo, or Walmart before anything is ordered.</p>
+            <p class="sum-note">Parts are priced at cost — no markup — plus the flat $300 build fee, same as the live builds page. Motherboards are specific brand and model boards; most other parts are listed generically by spec, and the exact brand is sourced at order time for the best value unless you name one in the &ldquo;Specific brand or model&rdquo; box. Prices are estimates; your confirmed quote locks in current pricing from Amazon, Best Buy, Newegg, B&amp;H Photo, or Walmart before anything is ordered.</p>
           </div>
         </aside>
       </div>
@@ -451,17 +468,25 @@
           { id: "285k", brand: "Intel", name: "Intel Core Ultra 9 285K", specs: "24 Cores, 24 Threads • up to 5.7 GHz", socket: "LGA1851", tdp: 125, perf: 84, price: 400 }
         ],
         board: [
-          { id: "b550", name: "B550 Motherboard", specs: "AM4 Socket • DDR4 • PCIe 4.0 • 2.5G LAN • Brand chosen at order time", socket: "AM4", memType: "DDR4", price: 150 },
-          { id: "b650e", name: "B650 Motherboard (WiFi)", specs: "AM5 Socket • DDR5 • WiFi 6E • PCIe 5.0 • Brand chosen at order time", socket: "AM5", memType: "DDR5", price: 109 },
-          { id: "b650t", name: "B650 Motherboard — Mid-Tier (WiFi)", specs: "AM5 Socket • DDR5 • WiFi 6E • PCIe 4.0 • Brand chosen at order time", socket: "AM5", memType: "DDR5", price: 150 },
-          { id: "x870", name: "X870 Motherboard (WiFi)", specs: "AM5 Socket • DDR5 • WiFi • PCIe 5.0 • Brand chosen at order time", socket: "AM5", memType: "DDR5", price: 210 },
-          { id: "x870e", name: "X870E Motherboard (WiFi)", specs: "AM5 Socket • DDR5 • WiFi • PCIe 5.0 • Brand chosen at order time", socket: "AM5", memType: "DDR5", price: 270 },
-          { id: "b850", name: "B850 Motherboard (WiFi 7)", specs: "AM5 Socket • DDR5 • WiFi 7 • PCIe 5.0 • Brand chosen at order time", socket: "AM5", memType: "DDR5", price: 210 },
-          { id: "b760d4", name: "B760 Motherboard — DDR4 (WiFi)", specs: "LGA1700 Socket • DDR4 • WiFi 6E • PCIe 5.0 • Brand chosen at order time", socket: "LGA1700", memType: "DDR4", price: 110 },
-          { id: "b760d5", name: "B760 Motherboard — DDR5 (WiFi)", specs: "LGA1700 Socket • DDR5 • WiFi 6E • PCIe 4.0 • Brand chosen at order time", socket: "LGA1700", memType: "DDR5", price: 170 },
-          { id: "z790", name: "Z790 Motherboard (WiFi 7)", specs: "LGA1700 Socket • DDR5 • WiFi 7 • Overclocking • Brand chosen at order time", socket: "LGA1700", memType: "DDR5", price: 220 },
-          { id: "z890a", name: "Z890 Motherboard (WiFi 7)", specs: "LGA1851 Socket • DDR5 • WiFi 7 • PCIe 5.0 • Brand chosen at order time", socket: "LGA1851", memType: "DDR5", price: 276 },
-          { id: "z890t", name: "Z890 Motherboard — Premium (WiFi 7)", specs: "LGA1851 Socket • DDR5 • WiFi 7 • Overclocking • Brand chosen at order time", socket: "LGA1851", memType: "DDR5", price: 549 }
+          { id: "b550-msi-provdh", group: "b550", name: "MSI B550M PRO-VDH WiFi", specs: "Micro ATX • Wi-Fi 5 • PCIe 4.0", socket: "AM4", memType: "DDR4", price: 107 },
+          { id: "b550", group: "b550", name: "MSI MAG B550 Tomahawk MAX WiFi", specs: "ATX • Wi-Fi 6E • PCIe 4.0", socket: "AM4", memType: "DDR4", price: 150 },
+          { id: "b650e", group: "b650", name: "Gigabyte B650 Eagle AX", specs: "ATX • Wi-Fi 6E • PCIe 5.0 M.2", socket: "AM5", memType: "DDR5", price: 109 },
+          { id: "b650t", group: "b650", name: "MSI MAG B650 Tomahawk WiFi", specs: "ATX • Wi-Fi 6E • PCIe 5.0 M.2", socket: "AM5", memType: "DDR5", price: 150 },
+          { id: "b850-gb-elite", group: "b850", name: "Gigabyte B850 Aorus Elite WiFi7", specs: "ATX • Wi-Fi 7 • PCIe 5.0", socket: "AM5", memType: "DDR5", price: 179 },
+          { id: "b850", group: "b850", name: "MSI MAG B850 Tomahawk MAX WiFi", specs: "ATX • Wi-Fi 7 • PCIe 5.0", socket: "AM5", memType: "DDR5", price: 210 },
+          { id: "x870", group: "x870", name: "Gigabyte X870 Eagle WiFi7", specs: "ATX • Wi-Fi 7 • USB4", socket: "AM5", memType: "DDR5", price: 210 },
+          { id: "x870-msi-tomahawk", group: "x870", name: "MSI MAG X870 Tomahawk WiFi", specs: "ATX • Wi-Fi 7 • USB4 • 5G LAN", socket: "AM5", memType: "DDR5", price: 260 },
+          { id: "x870e-gb-elite", group: "x870e", name: "Gigabyte X870E Aorus Elite WiFi7", specs: "ATX • Wi-Fi 7 • USB4", socket: "AM5", memType: "DDR5", price: 229 },
+          { id: "x870e", group: "x870e", name: "MSI MAG X870E Tomahawk WiFi", specs: "ATX • Wi-Fi 7 • USB4", socket: "AM5", memType: "DDR5", price: 270 },
+          { id: "b760d4", group: "b760d4", name: "MSI PRO B760M-A WiFi DDR4", specs: "Micro ATX • Wi-Fi 6E • DDR4", socket: "LGA1700", memType: "DDR4", price: 110 },
+          { id: "b760d4-gb-elite", group: "b760d4", name: "Gigabyte B760 Aorus Elite AX DDR4", specs: "ATX • Wi-Fi 6E • DDR4", socket: "LGA1700", memType: "DDR4", price: 178 },
+          { id: "b760d5", group: "b760d5", name: "MSI B760 Gaming Plus WiFi", specs: "ATX • Wi-Fi 6E • PCIe 5.0 M.2", socket: "LGA1700", memType: "DDR5", price: 170 },
+          { id: "b760d5-msi-tomahawk", group: "b760d5", name: "MSI MAG B760 Tomahawk WiFi", specs: "ATX • Wi-Fi 6E • PCIe 5.0", socket: "LGA1700", memType: "DDR5", price: 254 },
+          { id: "z790-gb-elite", group: "z790", name: "Gigabyte Z790 Aorus Elite AX", specs: "ATX • Wi-Fi 6E • Overclocking", socket: "LGA1700", memType: "DDR5", price: 190 },
+          { id: "z790", group: "z790", name: "MSI PRO Z790-A MAX WiFi", specs: "ATX • Wi-Fi 7 • Overclocking", socket: "LGA1700", memType: "DDR5", price: 220 },
+          { id: "z890-msi-tomahawk", group: "z890", name: "MSI MAG Z890 Tomahawk WiFi", specs: "ATX • Wi-Fi 7 • Overclocking", socket: "LGA1851", memType: "DDR5", price: 259 },
+          { id: "z890a", group: "z890", name: "Gigabyte Z890 Aorus Elite WiFi7", specs: "ATX • Wi-Fi 7 • Overclocking", socket: "LGA1851", memType: "DDR5", price: 276 },
+          { id: "z890t", group: "z890", name: "MSI MPG Z890 Edge Ti WiFi", specs: "ATX • Wi-Fi 7 • Premium", socket: "LGA1851", memType: "DDR5", price: 549 }
         ],
         gpu: [
           { id: "rx7600", brand: "AMD", name: "AMD Radeon RX 7600", specs: "8GB GDDR6 • RDNA 3 • Card brand varies", tdp: 165, perf: 42, price: 390 },
@@ -513,6 +538,34 @@
           { id: "sn850x-4", name: "4TB PCIe 4.0 NVMe SSD", specs: "PCIe 4.0 NVMe • up to 7,300 MB/s • Brand chosen at order time", price: 964 }
         ]
       };
+
+      /* Chipset groups for the motherboard accordion. Socket and memory type are
+         uniform within a group by construction, so group membership never
+         changes compatibility — only the selected model does. */
+      var BOARD_GROUPS = [
+        { id: "b550", name: "B550", desc: "Last-gen Ryzen value — PCIe 4.0 and DDR4 keep AM4 builds cheap and fast.", socket: "AM4", memType: "DDR4" },
+        { id: "b650", name: "B650", desc: "The original AM5 platform — DDR5 and years of CPU upgrade room without 800-series pricing.", socket: "AM5", memType: "DDR5" },
+        { id: "b850", name: "B850", desc: "Ryzen value pick — PCIe 5.0 graphics, everything a gaming build needs, none of the flagship extras.", socket: "AM5", memType: "DDR5" },
+        { id: "x870", name: "X870", desc: "Step-up Ryzen — USB4 and Wi-Fi 7 standard, more high-speed ports than B850.", socket: "AM5", memType: "DDR5" },
+        { id: "x870e", name: "X870E", desc: "Flagship Ryzen — the most PCIe 5.0 lanes for GPU + fast storage.", socket: "AM5", memType: "DDR5" },
+        { id: "b760d4", name: "B760 (DDR4)", desc: "Intel value with cheaper DDR4 memory — locked CPUs, no overclocking.", socket: "LGA1700", memType: "DDR4" },
+        { id: "b760d5", name: "B760 (DDR5)", desc: "Intel value on DDR5 — locked CPUs, no overclocking, modern memory.", socket: "LGA1700", memType: "DDR5" },
+        { id: "z790", name: "Z790", desc: "Intel enthusiast — CPU overclocking unlocked.", socket: "LGA1700", memType: "DDR5" },
+        { id: "z890", name: "Z890", desc: "Flagship Intel for Core Ultra — overclocking unlocked, the most lanes and ports.", socket: "LGA1851", memType: "DDR5" }
+      ];
+      function boardGroup(id) {
+        for (var i = 0; i < BOARD_GROUPS.length; i++) if (BOARD_GROUPS[i].id === id) return BOARD_GROUPS[i];
+        return null;
+      }
+      function groupModels(gid) {
+        return OPTIONS.board.filter(function (o) { return o.group === gid; });
+      }
+      var boardExpanded = null; // chipset group id; null = the selected board's group
+      function expandedGroupId() {
+        var selGroup = opt("board", state.board).group;
+        if (!boardExpanded || boardExpanded === selGroup) return selGroup;
+        return boardExpanded;
+      }
 
       // Sort every category cheapest to most expensive
       Object.keys(OPTIONS).forEach(function (key) {
@@ -614,6 +667,53 @@
         }
         return list;
       }
+      function optCardHtml(cat, o, sel) {
+        var dis = isDisabled(cat.id, o);
+        var isSel = o.id === sel.id;
+        var delta = o.price - sel.price;
+        var html = '<button class="opt' + (isSel ? " selected" : "") + '" data-cat="' + cat.id + '" data-id="' + o.id + '"' + (dis ? " disabled" : "") + '>';
+        html += '<span class="thumb">' + ICONS[cat.icon] + "</span>";
+        html += '<span class="meta"><span class="name">' + o.name + '</span><span class="specs" style="display:block">' + o.specs + "</span>";
+        html += '<span style="display:block">' + platTag(cat.id, o) + "</span>";
+        html += perfHtml(cat.id, o);
+        if (dis) html += '<span class="lock-tag">' + lockText(cat.id, o) + "</span>";
+        html += "</span>";
+        if (isSel) {
+          html += '<span class="sel-pill">Included</span><span class="change-pill">CHANGE</span>';
+        } else if (!dis) {
+          html += '<span class="price' + (delta < 0 ? " neg" : "") + '">' + (delta > 0 ? "+ " : "− ") + money(Math.abs(delta)) + "</span>";
+        }
+        html += "</button>";
+        return html;
+      }
+      function boardGroupsHtml(cat, sel) {
+        var expId = expandedGroupId();
+        var html = "";
+        BOARD_GROUPS.forEach(function (g) {
+          var models = groupModels(g.id);
+          if (!models.length) return;
+          var min = models[0].price;
+          models.forEach(function (m) { if (m.price < min) min = m.price; });
+          var hasSel = false;
+          models.forEach(function (m) { if (m.id === sel.id) hasSel = true; });
+          var open = g.id === expId;
+          html += '<div class="board-group' + (hasSel ? " has-sel" : "") + '">';
+          html += '<button class="bg-head" data-group="' + g.id + '" aria-expanded="' + open + '">';
+          html += '<span class="bg-main"><span class="bg-name">' + g.name + '</span>';
+          html += '<span class="bg-desc">' + g.desc + "</span>";
+          if (hasSel) html += '<span class="bg-sel">Selected: ' + sel.name + "</span>";
+          html += "</span>";
+          html += '<span class="bg-from">from ' + money(min) + "</span>";
+          html += '<span class="bg-chev">' + (open ? "▾" : "▸") + "</span></button>";
+          if (open) {
+            html += '<div class="bg-body">';
+            models.forEach(function (o) { html += optCardHtml(cat, o, sel); });
+            html += "</div>";
+          }
+          html += "</div>";
+        });
+        return html;
+      }
       function renderCats() {
         var hosts = { 1: document.getElementById("cats-core"), 2: document.getElementById("cats-cooling"), 3: document.getElementById("cats-storage") };
         Object.keys(hosts).forEach(function (k) { hosts[k].innerHTML = ""; });
@@ -624,7 +724,9 @@
           var html = '<div class="cat-head"><span>' + cat.title + ' <span class="cat-count">· ' + OPTIONS[cat.id].length + ' OPTIONS</span></span><span class="chev">▾</span></div><div class="cat-body">';
           html += filterRowHtml(cat.id);
           html += sortRowHtml(cat.id);
+          if (cat.id === "board") { html += boardGroupsHtml(cat, sel); }
           displayList(cat.id).forEach(function (o) {
+            if (cat.id === "board") return;
             if (!passesFilter(cat.id, o)) return;
             var dis = isDisabled(cat.id, o);
             var isSel = o.id === sel.id;
@@ -650,6 +752,13 @@
         var btns = document.querySelectorAll(".opt:not(:disabled)");
         btns.forEach(function (b) {
           b.addEventListener("click", function () { selectOption(b.getAttribute("data-cat"), b.getAttribute("data-id")); });
+        });
+        document.querySelectorAll(".bg-head").forEach(function (h) {
+          h.addEventListener("click", function () {
+            var gid = h.getAttribute("data-group");
+            boardExpanded = (expandedGroupId() === gid) ? opt("board", state.board).group : gid;
+            renderCats();
+          });
         });
         document.querySelectorAll(".filter-pill[data-filter-cat]").forEach(function (p) {
           p.addEventListener("click", function () {
@@ -680,6 +789,7 @@
           var nowSocket = socket();
           if (opt("board", state.board).socket !== nowSocket) {
             state.board = DEFAULT_BOARD[nowSocket] || firstBoardFor(nowSocket);
+            boardExpanded = opt("board", state.board).group;
             var needMem = boardMem();
             if (opt("ram", state.ram).memType !== needMem) state.ram = DEFAULT_RAM[needMem];
             showNotice("Platform changed to " + nowSocket + " (" + opt("cpu", state.cpu).brand + ") — motherboard and memory were switched to match (" +
@@ -688,6 +798,7 @@
         } else if (catId === "board") {
           var prevMem = boardMem();
           state.board = id;
+          boardExpanded = opt("board", state.board).group;
           var newMem = boardMem();
           if (prevMem !== newMem && opt("ram", state.ram).memType !== newMem) {
             state.ram = DEFAULT_RAM[newMem];
